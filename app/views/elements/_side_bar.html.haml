@@ -9,7 +9,13 @@
       .pull-left.info
         %p= current_user.name
 
-    / /.search form
+    = form_tag '/dashboard', method: :get, class: 'sidebar-form' do
+      .input-group
+        = select_tag( :organization, options_from_collection_for_select(@organizations, 'id', 'name', params[:organization]), class: 'form-control')
+        .input-group-btn
+          %button#search-btn.btn.btn-flat{:name => "search", :type => "submit"}
+            %i.fa.fa-exchange
+
     / sidebar menu: : style can be found in sidebar.less
     %ul.sidebar-menu
       %li.header MAIN NAVIGATION

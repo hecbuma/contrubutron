@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
 
+  has_and_belongs_to_many :organizations
+
   def self.sanitize_user_params(auth)
     user_params = {
       provider: auth.provider,
