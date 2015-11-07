@@ -4,6 +4,7 @@ class DashboardController < ApplicationController
   before_filter :get_organizations
 
   def index
+    flash[:info] = "Start by selecting one of your organization." unless @organization_default
   end
 
   def show
