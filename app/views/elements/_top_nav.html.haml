@@ -1,0 +1,47 @@
+%header.main-header
+  / Logo
+  %a.logo{:href => "../../index2.html"}
+    / mini logo for sidebar mini 50x50 pixels
+    %span.logo-mini
+      %b> contributron
+    / logo for regular state and mobile devices
+    %span.logo-lg
+      %b> Contribu
+      tron
+  / Header Navbar: style can be found in header.less
+  %nav.navbar.navbar-static-top{:role => "navigation"}
+    / Sidebar toggle button
+    %a.sidebar-toggle{"data-toggle" => "offcanvas", :href => "#", :role => "button"}
+      %span.sr-only Toggle navigation
+      %span.icon-bar
+      %span.icon-bar
+      %span.icon-bar
+    .navbar-custom-menu
+      %ul.nav.navbar-nav
+
+        / User Account: style can be found in dropdown.less
+        %li.dropdown.user.user-menu
+          %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+            = image_tag current_user.avatar, class: 'user-image', with: 160, height: 160
+            %span.hidden-xs= current_user.username
+          %ul.dropdown-menu
+            / User image
+            %li.user-header
+              = image_tag current_user.avatar, class: 'img-circle'
+              %p
+                = current_user.name
+                = "- Web Developer"
+                %small
+                  Member since
+                  = time_ago_in_words(current_user.created_at)
+
+            / Menu Footer
+            %li.user-footer
+              .pull-left
+                %a.btn.btn-default.btn-flat{:href => "#"} Profile
+              .pull-right
+                %a.btn.btn-default.btn-flat{:href => "/signout"} Sign out
+        / Control Sidebar Toggle Button
+        %li
+          %a{"data-toggle" => "control-sidebar", :href => "#"}
+            %i.fa.fa-gears

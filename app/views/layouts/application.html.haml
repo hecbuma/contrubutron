@@ -1,0 +1,51 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title Contributron
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = stylesheet_link_tag    'vendor', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+  %body.hold-transition.skin-purple.sidebar-mini
+    .wrapper
+      = render partial: 'elements/top_nav'
+      = render partial: 'elements/side_bar'
+      / Content Wrapper. Contains page content
+      .content-wrapper
+        / Content Header (Page header)
+        %section.content-header
+          %h1
+            Blank page
+            %small it all starts here
+          %ol.breadcrumb
+            %li
+              %a{:href => "#"}
+                %i.fa.fa-dashboard
+                Home
+            %li
+              %a{:href => "#"} Examples
+            %li.active Blank page
+        / Main content
+        %section.content
+          / Default box
+          .box
+            .box-header.with-border
+              %h3.box-title Title
+              .box-tools.pull-right
+                %button.btn.btn-box-tool{"data-toggle" => "tooltip", "data-widget" => "collapse", :title => "Collapse", :type => "button"}
+                  %i.fa.fa-minus
+                %button.btn.btn-box-tool{"data-toggle" => "tooltip", "data-widget" => "remove", :title => "Remove", :type => "button"}
+                  %i.fa.fa-times
+            .box-body
+              = yield
+            / /.box-body
+            .box-footer
+              Footer
+            / /.box-footer
+          / /.box
+    %footer.main-footer
+      .pull-right.hidden-xs
+        %b Version
+        1.0.0
+      Made with lot's of beer and RedBull.
