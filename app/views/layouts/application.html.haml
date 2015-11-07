@@ -17,32 +17,26 @@
         / Content Header (Page header)
         %section.content-header
           %h1
-            Blank page
-            %small it all starts here
-          %ol.breadcrumb
-            %li
-              %a{:href => "#"}
-                %i.fa.fa-dashboard
-                Home
-            %li
-              %a{:href => "#"} Examples
-            %li.active Blank page
+            = yield :page_title
+            %small= yield :page_subtitle
+
         / Main content
         %section.content
           / Default box
           .box
             .box-header.with-border
-              %h3.box-title Title
+              %h3.box-title
               .box-tools.pull-right
                 %button.btn.btn-box-tool{"data-toggle" => "tooltip", "data-widget" => "collapse", :title => "Collapse", :type => "button"}
                   %i.fa.fa-minus
                 %button.btn.btn-box-tool{"data-toggle" => "tooltip", "data-widget" => "remove", :title => "Remove", :type => "button"}
                   %i.fa.fa-times
             .box-body
+
               = yield
             / /.box-body
             .box-footer
-              Footer
+              
             / /.box-footer
           / /.box
     %footer.main-footer

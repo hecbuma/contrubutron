@@ -4,7 +4,15 @@ class DashboardController < ApplicationController
   before_filter :get_organizations
 
   def index
-    flash[:info] = "Start by selecting one of your organization." unless @organization_default
+    @organization = Organization.find(params[:organization])
+
+    if current_user.organizations.where("aasm_state like 'fetching'").size > 0 && !@organization.fetching?
+      flash[:alert] = "You can only process one organization at the time."
+    elsif @organization.created?
+      @organization.move_to_queue
+    end
+
+    flash[:info] = "Start by selecting one of your organization." unless @organization
   end
 
   def show

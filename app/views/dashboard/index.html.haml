@@ -1,2 +1,8 @@
-%h1 DashboardController#index
-%p Find me in app/views/dashboard_controller/index.html.haml
+- content_for :page_title do
+  Dashboard
+
+- if @organization.fetching?
+  %h1
+    Getting data for
+    = @organization.name
+    %p give us a moment to query necesary data from Big Query.

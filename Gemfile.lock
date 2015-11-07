@@ -1,3 +1,9 @@
+GIT
+  remote: git://github.com/aasm/aasm.git
+  revision: a31b02cc2b1c2cf36658c8a21acad1ee2b0d6623
+  specs:
+    aasm (4.4.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -247,6 +253,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  aasm!
   bootstrap-sass
   coffee-rails (~> 4.1.0)
   font-awesome-sass
