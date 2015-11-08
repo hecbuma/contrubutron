@@ -13,6 +13,7 @@ gem 'aasm', github: 'aasm/aasm'
 gem 'bigquery'
 gem 'rollbar', '~> 2.4.0'
 gem 'oj', '~> 2.12.14'
+gem "skylight"
 
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
