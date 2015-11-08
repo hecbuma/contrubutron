@@ -13,7 +13,7 @@ class DashboardController < ApplicationController
       end
     end
 
-    flash[:info] = "Start by selecting one of your organization." unless current_user.organizations("aasm_state like 'completed'").any?
+    flash[:info] = "Start by selecting one of your organization." unless current_user.organizations.where("aasm_state like 'completed'").any?
   end
 
   def show
