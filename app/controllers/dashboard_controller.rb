@@ -4,18 +4,18 @@ class DashboardController < ApplicationController
   before_filter :get_organizations
 
   def index
-    if params[:organization]
-      @organization = Organization.where(id: params[:organization]).first
-      if @organization
-        if current_user.organizations.where("aasm_state like 'fetching'").size > 0 && !@organization.fetching?
-          flash[:alert] = "You can only process one organization at the time."
-        elsif @organization.created?
-          @organization.move_to_queue(session[:user_token])
-        end
+
+    @organization = Organization.where(id: params[:organization]).try(:first) || current_user.organizations.where(aasm_state: 'completed').try(:first)
+    if @organization
+      params[:organization] = @organization.id
+      if current_user.organizations.where("aasm_state like 'fetching'").size > 0 && !@organization.fetching?
+        flash[:alert] = "You can only process one organization at the time."
+      elsif @organization.created?
+        @organization.move_to_queue(session[:user_token])
       end
     end
 
-    flash[:info] = "Start by selecting one of your organization." unless @organization
+    flash[:info] = "Start by selecting one of your organization." unless current_user.organizations("aasm_state like 'completed'").any?
   end
 
   def show

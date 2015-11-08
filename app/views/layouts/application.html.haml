@@ -2,11 +2,14 @@
 %html
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{:content => "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no", :name => "viewport"}/
     %title Contributron
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
     = stylesheet_link_tag    'vendor', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
+
+    = favicon_link_tag 'contributron-logo.ico'
   %body.hold-transition.skin-purple.sidebar-mini
     .wrapper
       = render partial: 'elements/top_nav'
@@ -22,23 +25,8 @@
 
         / Main content
         %section.content
-          / Default box
-          .box
-            .box-header.with-border
-              %h3.box-title
-              .box-tools.pull-right
-                %button.btn.btn-box-tool{"data-toggle" => "tooltip", "data-widget" => "collapse", :title => "Collapse", :type => "button"}
-                  %i.fa.fa-minus
-                %button.btn.btn-box-tool{"data-toggle" => "tooltip", "data-widget" => "remove", :title => "Remove", :type => "button"}
-                  %i.fa.fa-times
-            .box-body
-
-              = yield
-            / /.box-body
-            .box-footer
-              
-            / /.box-footer
-          / /.box
+          = yield
+          
     %footer.main-footer
       .pull-right.hidden-xs
         %b Version

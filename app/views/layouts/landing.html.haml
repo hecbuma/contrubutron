@@ -2,9 +2,18 @@
 %html
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{:content => "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no", :name => "viewport"}/
     %title Contributron
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
-  %body
-    = yield
+
+    = favicon_link_tag 'contributron-logo.ico'
+  %body.lockscreen
+    .lockscreen-wrapper
+      .lockscreen-logo
+        = image_tag 'contributron.svg', width: '400'
+
+      = yield
+      .lockscreen-footer.text-center
+        Made with Beers & RedBull

@@ -1,8 +1,21 @@
 - content_for :page_title do
   Dashboard
+  = " - #{@organization.try(:name).try(:capitalize)}"
 
 - if @organization.try(:fetching?)
-  %h1
-    Getting data for
-    = @organization.name
-    %p give us a moment to query necesary data from Big Query.
+  .box
+    .box-header.with-border
+      %h3.box-title
+      .box-tools.pull-right
+        %button.btn.btn-box-tool{"data-toggle" => "tooltip", "data-widget" => "collapse", :title => "Collapse", :type => "button"}
+          %i.fa.fa-minus
+        %button.btn.btn-box-tool{"data-toggle" => "tooltip", "data-widget" => "remove", :title => "Remove", :type => "button"}
+          %i.fa.fa-times
+    .box-body
+      %h1
+        Getting data for
+        = @organization.name
+        %p give us a moment to query necesary data from Big Query.
+    .box-footer
+
+= render partial: 'dashboard/organization_stats' if @organization.completed?

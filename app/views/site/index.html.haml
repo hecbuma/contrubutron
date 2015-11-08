@@ -1,3 +1,16 @@
-%h1 SiteController#index
-%p Find me in app/views/site_controller/index.html.haml
-= link_to 'Sign in with Github', '/auth/github'
+
+/ START LOCK SCREEN ITEM
+.lockscreen-item
+  / lockscreen image
+  .lockscreen-image
+    %f.fa.fa-github.fa-5x
+
+  / /.lockscreen-image
+  / lockscreen credentials (contains the form)
+  %div.lockscreen-credentials
+    .input-group
+      .form-control
+        = link_to 'Sign in with Github', '/auth/github'
+      .input-group-btn
+        = link_to '/auth/github', class: 'btn' do
+          %i.fa.fa-arrow-right.text-muted

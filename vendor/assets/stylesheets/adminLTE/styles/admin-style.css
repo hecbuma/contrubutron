@@ -3137,7 +3137,7 @@ table.text-center th {
 .lockscreen-wrapper {
   max-width: 400px;
   margin: 0 auto;
-  margin-top: 10%;
+  margin-top: 3%;
 }
 /* User name [optional] */
 .lockscreen .lockscreen-name {

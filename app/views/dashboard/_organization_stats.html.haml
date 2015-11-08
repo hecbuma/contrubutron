@@ -1,0 +1,53 @@
+.row
+  .col-md-3.col-sm-6.col-xs-12
+    .info-box
+      %span.info-box-icon.bg-aqua
+        %i.fa.fa-code
+      .info-box-content
+        %span.info-box-text Merged Pull Requests
+        %span.info-box-number 1,410
+      / /.info-box-content
+    / /.info-box
+  / /.col
+  .col-md-3.col-sm-6.col-xs-12
+    .info-box
+      %span.info-box-icon.bg-green
+        %i.fa.fa-code-fork
+      .info-box-content
+        %span.info-box-text Open Pull Requests
+        %span.info-box-number 410
+      / /.info-box-content
+    / /.info-box
+  / /.col
+  .col-md-3.col-sm-6.col-xs-12
+    .info-box
+      %span.info-box-icon.bg-yellow
+        %i.fa.fa-github-square
+      .info-box-content
+        %span.info-box-text Repositories
+        %span.info-box-number 13,648
+      / /.info-box-content
+    / /.info-box
+  / /.col
+  .col-md-3.col-sm-6.col-xs-12
+    .info-box
+      %span.info-box-icon.bg-red
+        %i.fa.fa-users
+      .info-box-content
+        %span.info-box-text Members
+        %span.info-box-number= @organization.members.count
+      / /.info-box-content
+    / /.info-box
+.row
+  - @organization.members.each do |member|
+    .col-md-4
+      / Widget: user widget style 1
+      .box.box-widget.widget-user-2
+        / Add the bg color to the header using any of the bg-* classes
+        .widget-user-header.bg-yellow
+          .widget-user-image
+            = image_tag member.avatar, class: 'img-circle'
+          / /.widget-user-image
+          %h3.widget-user-username= member.name
+          %h5.widget-user-desc
+            %p= link_to member.profile.split("users/")[1], member.profile
