@@ -3024,6 +3024,9 @@ table.text-center th {
 .widget-user .widget-user-desc {
   margin-top: 0;
 }
+.widget-user .widget-user-desc a{
+  color: white;
+}
 .widget-user .widget-user-image {
   position: absolute;
   top: 65px;

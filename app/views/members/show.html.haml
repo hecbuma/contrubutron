@@ -5,6 +5,7 @@
     .box.box-widget.widget-user
       .widget-user-header.bg-aqua-active
         %h3.widget-user-username= @member.name
+        %h5.widget-user-desc= link_to @member.profile, @member.profile, target: '_blank'
       .widget-user-image
         = image_tag @member.avatar, class: 'img-circle'
       .box-footer
