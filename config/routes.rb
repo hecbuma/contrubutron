@@ -1,3 +1,4 @@
+require 'sidekiq/web'
 Rails.application.routes.draw do
 
   get 'auth/:provider/callback' => 'sessions#create'
@@ -7,4 +8,5 @@ Rails.application.routes.draw do
 
 
   root 'site#index'
+  mount Sidekiq::Web, at: "/sidekiq"
 end
