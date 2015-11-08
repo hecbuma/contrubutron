@@ -6,6 +6,7 @@ gem 'rails', '4.2.4'
 gem 'pg'
 gem 'github_api'
 gem 'sidekiq'
+gem 'sinatra', require: false
 gem 'omniauth'
 gem 'omniauth-github'
 gem 'aasm', github: 'aasm/aasm'
