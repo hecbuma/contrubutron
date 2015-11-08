@@ -55,12 +55,12 @@ class Organization < ActiveRecord::Base
   end
 
   # DATA MINING
-  def move_to_queue(token)
+  def move_to_queue(token, user)
     self.fetch!
-    QueryJob.perform_later self, token
+    QueryJob.perform_later self, token, user
   end
 
-  def fetch_data(token)
+  def fetch_data(token, current_user)
     begin
 
       multiple_lists = members.map(&:name).each_slice(4).to_a
@@ -149,7 +149,10 @@ class Organization < ActiveRecord::Base
       errors[:error] = message
       puts message
     end
-    self.complete! if errors.empty?
+    if errors.empty?
+      self.complete!
+      NotifyUsers.notify(self, current_user).deliver_now if current_user.email.present?
+    end
   end
 
 end

@@ -1,0 +1,9 @@
+%h1 Hello from Contributron
+
+%p
+  We finish to fetch all the data from your organization:
+  = @organization.name
+%p
+  Thanks for using our app, you can go a check a nice dashboard with all the info from your Organization
+%p
+  = link_to "http://contributron.r15.railsrumble.com/dashboard", "http://contributron.r15.railsrumble.com/dashboard?organization=#{@organization.id}"
