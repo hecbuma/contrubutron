@@ -1,6 +1,26 @@
 - content_for :page_title do
   Member
-  = " - #{@member.try(:name)}"
+.row
+  .col-md-12
+    .box.box-widget.widget-user
+      .widget-user-header.bg-aqua-active
+        %h3.widget-user-username= @member.name
+      .widget-user-image
+        = image_tag @member.avatar, class: 'img-circle'
+      .box-footer
+        .row
+          .col-sm-4.border-right
+            .description-block
+              %h5.description-header= @member.open_pull_requests_count
+              %span.description-text OPEN PULL REQUEST
+          .col-sm-4.border-right
+            .description-block
+              %h5.description-header= @member.pull_requests_weight.round(2)
+              %span.description-text CONTRIBUTRON SCORE
+          .col-sm-4
+            .description-block
+              %h5.description-header= @member.merged_pull_requests_count
+              %span.description-text MERGED PULL REQUEST
 .row
   .col-xs-12
     .box
