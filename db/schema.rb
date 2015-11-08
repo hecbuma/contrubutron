@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151107170904) do
+ActiveRecord::Schema.define(version: 20151107225555) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,6 +40,32 @@ ActiveRecord::Schema.define(version: 20151107170904) do
   create_table "organizations_users", force: :cascade do |t|
     t.integer "user_id"
     t.integer "organization_id"
+  end
+
+  create_table "pull_requests", force: :cascade do |t|
+    t.integer  "member_id"
+    t.integer  "repository_id"
+    t.text     "payload"
+    t.string   "state"
+    t.boolean  "merged"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.string   "url"
+    t.integer  "comments"
+    t.integer  "review_comments"
+    t.integer  "additions"
+    t.integer  "deletions"
+    t.integer  "changed_files"
+  end
+
+  create_table "repositories", force: :cascade do |t|
+    t.string   "name"
+    t.string   "profile"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "stars"
+    t.integer  "watchers"
+    t.integer  "forks"
   end
 
   create_table "users", force: :cascade do |t|

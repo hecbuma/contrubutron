@@ -9,6 +9,7 @@ gem 'sidekiq'
 gem 'omniauth'
 gem 'omniauth-github'
 gem 'aasm', github: 'aasm/aasm'
+gem 'bigquery'
 
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'

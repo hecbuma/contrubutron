@@ -20,6 +20,16 @@ class GithubService
     end
   end
 
+  def get_pull_request(repo, user, number)
+    Rails.cache.fetch("#{cache_key}/pulls/#{repo}/#{user}/#{number}/get", expires_in: 6.hours) do
+    begin
+      github.pull_requests.get(user: user, repo: repo, number: number)
+    rescue => e
+      nil
+    end
+    end
+  end
+
 
   def get_members(organization)
     Rails.cache.fetch("#{cache_key}/members/#{organization}/list", expires_in: 6.hours) do
