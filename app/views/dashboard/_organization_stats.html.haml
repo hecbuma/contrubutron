@@ -56,7 +56,7 @@
     .col-md-3
       .box.box-widget.widget-user
         .widget-user-header.bg-aqua-active
-          %h3.widget-user-username= member.name
+          %h3.widget-user-username= link_to member.name, member_path(member)
         .widget-user-image
           = image_tag member.avatar, class: 'img-circle'
         .box-footer
@@ -85,7 +85,7 @@
           .widget-user-image
             = image_tag member.avatar, class: 'img-circle'
           / /.widget-user-image
-          %h3.widget-user-username= member.name
+          %h3.widget-user-username= link_to member.name, member_path(member, organization: params[:organization])
           %h5.widget-user-desc
             %b Contribution Score:
             = member.pull_requests_weight.round(2)

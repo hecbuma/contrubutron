@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
   before_filter :avoid_logged_in_user_to_sign_in, :except => :destroy
+  skip_before_filter :get_organizations
 
 
   def create

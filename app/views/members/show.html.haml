@@ -1,0 +1,30 @@
+- content_for :page_title do
+  Member
+  = " - #{@member.try(:name)}"
+.row
+  .col-xs-12
+    .box
+      .box-header
+        %h3.box-title Pull Requests
+      / /.box-header
+      .box-body.table-responsive.no-padding
+        %table.table.table-hover
+          %tr
+            %th Url
+            %th Repository
+            %th Date
+            %th Status
+            %th Merged
+            %th additions
+            %th deletions
+            %th files changed
+          - @member.pull_requests.each do |pull_request|
+            %tr
+              %td= link_to pull_request.url, pull_request.url, target: '_blank'
+              %td= pull_request.repository.name
+              %td= JSON.parse(pull_request.payload)["pull_request"]["created_at"].to_datetime.in_time_zone.to_s :short
+              %td= pull_request.state
+              %td= pull_request.merged
+              %td= pull_request.additions
+              %td= pull_request.deletions
+              %td= pull_request.changed_files
