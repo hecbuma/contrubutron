@@ -23,6 +23,38 @@ class Organization < ActiveRecord::Base
     end
   end
 
+  # STATS
+  def open_pull_requests
+    members.map(&:open_pull_requests_count).inject(0, &:+)
+  end
+
+  def merged_pull_requests
+    members.map(&:merged_pull_requests_count).inject(0, &:+)
+  end
+
+  def rank_members
+    rank = members.sort {|a,b| a.pull_requests_weight <=> b.pull_requests_weight}.reverse
+    rank.take(8)
+  end
+
+  def no_rank_members
+    members.to_a.delete_if{|m| rank_members.include? m}
+  end
+
+  def repository_count
+    Repository.per_organization(self.id).count
+  end
+
+  def repository_rank
+    rank = []
+    Repository.per_organization(self.id).each do |repo|
+      rank << [repo.pull_requests.where(member_id: self.member_ids).count, repo]
+    end
+    rank = rank.sort {|a,b| a.first <=> b.first}.reverse
+    rank.take(5)
+  end
+
+  # DATA MINING
   def move_to_queue(token)
     self.fetch!
     QueryJob.perform_later self, token

@@ -5,7 +5,7 @@
         %i.fa.fa-code
       .info-box-content
         %span.info-box-text Merged Pull Requests
-        %span.info-box-number 1,410
+        %span.info-box-number= @organization.merged_pull_requests
       / /.info-box-content
     / /.info-box
   / /.col
@@ -15,7 +15,7 @@
         %i.fa.fa-code-fork
       .info-box-content
         %span.info-box-text Open Pull Requests
-        %span.info-box-number 410
+        %span.info-box-number= @organization.open_pull_requests
       / /.info-box-content
     / /.info-box
   / /.col
@@ -25,7 +25,7 @@
         %i.fa.fa-github-square
       .info-box-content
         %span.info-box-text Repositories
-        %span.info-box-number 13,648
+        %span.info-box-number= @organization.repository_count
       / /.info-box-content
     / /.info-box
   / /.col
@@ -39,7 +39,30 @@
       / /.info-box-content
     / /.info-box
 .row
-  - @organization.members.each do |member|
+  - @organization.rank_members.each do |member|
+    .col-md-3
+      .box.box-widget.widget-user
+        .widget-user-header.bg-aqua-active
+          %h3.widget-user-username= member.name
+        .widget-user-image
+          = image_tag member.avatar, class: 'img-circle'
+        .box-footer
+          .row
+            .col-sm-4.border-right
+              .description-block
+                %h5.description-header= member.open_pull_requests_count
+                %span.description-text OPEN PULL REQUEST
+            .col-sm-4.border-right
+              .description-block
+                %h5.description-header= member.pull_requests_weight.round(2)
+                %span.description-text CONTRIBUTRON SCORE
+            .col-sm-4
+              .description-block
+                %h5.description-header= member.merged_pull_requests_count
+                %span.description-text MERGED PULL REQUEST
+
+.row
+  - @organization.no_rank_members.each do |member|
     .col-md-4
       / Widget: user widget style 1
       .box.box-widget.widget-user-2
@@ -50,4 +73,9 @@
           / /.widget-user-image
           %h3.widget-user-username= member.name
           %h5.widget-user-desc
-            %p= link_to member.profile.split("users/")[1], member.profile
+            %b Contribution Score:
+            = member.pull_requests_weight.round(2)
+            %b Merged PRs:
+            = member.merged_pull_requests_count
+            %b Open PRs:
+            = member.open_pull_requests_count

@@ -4306,6 +4306,7 @@ table.text-center th {
 }
 .description-block > .description-text {
   text-transform: uppercase;
+  font-size: .7em;
 }
 .bg-red,
 .bg-yellow,
