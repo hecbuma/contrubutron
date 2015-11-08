@@ -1,0 +1,22 @@
+- content_for :page_title do
+  Profile
+  = " - #{@user.name}"
+.row
+  .col-md-push-3.col-md-6
+    / general form elements
+    .box.box-primary
+      .box-header.with-border
+        %h3.box-title Edit
+      = form_for @user, url: update_profile_path(@user), method: :patch do |f|
+        .box-body
+          .form-group
+            = f.label :name
+            = f.text_field :name, placeholder: 'Your name', class: 'form-control'
+          .form-group
+            = f.label :email
+            = f.email_field :email, placeholder: 'email', class: 'form-control'
+          .form-group
+            = f.label :username
+            = f.text_field :username, class: 'form-control', disabled: true
+        .box-footer
+          = f.submit 'Submit', class: 'btn btn-primary'

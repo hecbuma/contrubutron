@@ -39,10 +39,10 @@
             / Menu Footer
             %li.user-footer
               .pull-left
-                %a.btn.btn-default.btn-flat{:href => "#"} Profile
+                = link_to "Profile", edit_profile_path, class: 'btn btn-default btn-flat'
               .pull-right
                 %a.btn.btn-default.btn-flat{:href => "/signout"} Sign out
         / Control Sidebar Toggle Button
         %li
-          %a{"data-toggle" => "control-sidebar", :href => "#"}
+          = link_to edit_profile_path do
             %i.fa.fa-gears

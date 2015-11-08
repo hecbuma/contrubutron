@@ -16,6 +16,21 @@
         Getting data for
         = @organization.name
         %p give us a moment to query necesary data from Big Query.
+      %p Please reload the page in like 2 minutes or wait for an email from us.
     .box-footer
 
 = render partial: 'dashboard/organization_stats' if @organization.try(:completed?)
+
+- if @organization.nil?
+  .box
+    .box-header.with-border
+      %h3.box-title
+      .box-tools.pull-right
+        %button.btn.btn-box-tool{"data-toggle" => "tooltip", "data-widget" => "collapse", :title => "Collapse", :type => "button"}
+          %i.fa.fa-minus
+        %button.btn.btn-box-tool{"data-toggle" => "tooltip", "data-widget" => "remove", :title => "Remove", :type => "button"}
+          %i.fa.fa-times
+    .box-body
+      %h1
+        Thanks for login,
+      %p To see information about the desired organization, start by selecting one in the left dropdown and click on the button next to it.
