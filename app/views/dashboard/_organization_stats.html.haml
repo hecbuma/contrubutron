@@ -68,7 +68,7 @@
             .col-sm-4.border-right
               .description-block
                 %h5.description-header= member.pull_requests_weight.round(2)
-                %span.description-text CONTRIBUTRON SCORE
+                %span.description-text= link_to "CONTRIBUTRON SCORE", about_index_path(anchor: 'score')
             .col-sm-4
               .description-block
                 %h5.description-header= member.merged_pull_requests_count

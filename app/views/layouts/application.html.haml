@@ -4,9 +4,9 @@
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %meta{:content => "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no", :name => "viewport"}/
     %title Contributron
-    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
-    = stylesheet_link_tag    'vendor', media: 'all', 'data-turbolinks-track' => true
-    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = stylesheet_link_tag    'application', media: 'all'
+    = stylesheet_link_tag    'vendor', media: 'all'
+    = javascript_include_tag 'application'
     = csrf_meta_tags
 
     = favicon_link_tag 'contributron-logo.ico'
@@ -26,7 +26,7 @@
         / Main content
         %section.content
           = yield
-          
+
     %footer.main-footer
       .pull-right.hidden-xs
         %b Version

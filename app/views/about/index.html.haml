@@ -1,0 +1,28 @@
+- content_for :page_title do
+  About
+  = " - Contributron"
+
+
+%section#introduction
+  %h2.page-header
+    %a{:href => "#introduction"} Introduction
+  %p.lead
+    %b Contributron
+    Is a dashboard for open source contributions from team members withing a same Github Organization.
+  %p.lead
+    The porpouse of this dashboard is to give a big picture of what's going on on yout Organization and be
+    able to keep and eye and your team members and create a healthy rivalry beatween your team mates.
+%section#score
+  %h2.page-header
+    %a{:href => "#score"} Contributron Score
+  %p.lead
+    %b Contributron Score
+    Is a value that I have created to be able to rank members contributions and it's based in the following
+    data:
+  %ul
+    %li pull request's repository starts count.
+    %li pull request's repository watchers count.
+    %li pull request's repository forks count.
+    %li pull request's additions.
+    %li pull request's deletions.
+    %li pull request's state, which mean if a PR is merged or not.
