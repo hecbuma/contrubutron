@@ -16,9 +16,11 @@ class User < ActiveRecord::Base
   end
 
   def self.with_omniauth(auth)
-    first_or_create sanitize_user_params(auth)
+    user = User.where(uid: auth.uid).first
+    if user.nil?
+      user = create(sanitize_user_params(auth))
+    end
+    user
   end
-
-
 
 end
