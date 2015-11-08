@@ -5,12 +5,13 @@ class DashboardController < ApplicationController
 
   def index
     if params[:organization]
-      @organization = Organization.find(params[:organization])
-
-      if current_user.organizations.where("aasm_state like 'fetching'").size > 0 && !@organization.fetching?
-        flash[:alert] = "You can only process one organization at the time."
-      elsif @organization.created?
-        @organization.move_to_queue(session[:user_token])
+      @organization = Organization.where(id: params[:organization]).first
+      if @organization
+        if current_user.organizations.where("aasm_state like 'fetching'").size > 0 && !@organization.fetching?
+          flash[:alert] = "You can only process one organization at the time."
+        elsif @organization.created?
+          @organization.move_to_queue(session[:user_token])
+        end
       end
     end
 

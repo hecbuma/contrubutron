@@ -1,7 +1,7 @@
 - content_for :page_title do
   Dashboard
 
-- if @organization.fetching?
+- if @organization.try(:fetching?)
   %h1
     Getting data for
     = @organization.name
