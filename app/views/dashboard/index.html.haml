@@ -18,4 +18,4 @@
         %p give us a moment to query necesary data from Big Query.
     .box-footer
 
-= render partial: 'dashboard/organization_stats' if @organization.completed?
+= render partial: 'dashboard/organization_stats' if @organization.try(:completed?)
