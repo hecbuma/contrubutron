@@ -51,7 +51,7 @@ class Organization < ActiveRecord::Base
       rank << [repo.pull_requests.where(member_id: self.member_ids).count, repo]
     end
     rank = rank.sort {|a,b| a.first <=> b.first}.reverse
-    rank.take(5)
+    rank.take(12)
   end
 
   # DATA MINING

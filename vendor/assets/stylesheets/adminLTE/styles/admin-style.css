@@ -2060,6 +2060,15 @@ a:focus {
 .progress-description {
   margin: 0;
 }
+.info-box.reposistories{
+  min-height: 60px;
+}
+.info-box.reposistories .info-box-icon{
+  height: 60px;
+  width: 60px;
+  font-size: 38px;
+  line-height: 60px;
+}
 /*
  * Component: Timeline
  * -------------------
