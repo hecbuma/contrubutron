@@ -9,6 +9,14 @@
     = csrf_meta_tags
 
     = favicon_link_tag 'contributron-logo.ico'
+    :javascript
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-69835898-1', 'auto');
+      ga('send', 'pageview');
   %body.lockscreen
     .lockscreen-wrapper
       .lockscreen-logo
@@ -17,3 +25,10 @@
       = yield
       .lockscreen-footer.text-center
         Made with Beers & RedBull
+    :javascript
+      var rumbleBannerBackgroundColor, rumbleBannerTextColor, rumbleBannerLinkColor, rumbleBannerPlacement;
+      rumbleBannerBackgroundColor = "#161616";
+      rumbleBannerTextColor = "#b0b0b0";
+      rumbleBannerLinkColor = "#ffffff";
+      rumbleBannerPlacement = "bottom"; // Optionally replace with "bottom".
+    %script{:src => "https://d4nnn7wspfa3h.cloudfront.net/banner-2015.js", :type => "text/javascript"}
